@@ -25,6 +25,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: homework
+          path: homework
       - shell: bash
         run: |
           value=`cat homework/math-homework.txt`
@@ -44,6 +45,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: homework
+          path: homework
       - name: Print the final result
         shell: bash
         run: |
