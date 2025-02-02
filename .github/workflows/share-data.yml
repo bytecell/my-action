@@ -9,12 +9,12 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 3 + 7 > math-homework.txt
+          expr 3 + 7 > math-homework1.txt
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v4
         with:
           name: homework
-          path: math-homework.txt
+          path: math-homework1.txt
 
   job_2:
     name: Multiply by 9
@@ -28,13 +28,13 @@ jobs:
           path: homework
       - shell: bash
         run: |
-          value=`cat homework/math-homework.txt`
-          expr $value \* 9 > homework/math-homework.txt
+          value=`cat homework/math-homework1.txt`
+          expr $value \* 9 > homework/math-homework2.txt
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v4
         with:
           name: homework
-          path: homework/math-homework.txt
+          path: homework/math-homework2.txt
 
   job_3:
     name: Display results
@@ -49,5 +49,5 @@ jobs:
       - name: Print the final result
         shell: bash
         run: |
-          value=`cat homework/math-homework.txt`
+          value=`cat homework/math-homework2.txt`
           echo The result is $value
